@@ -1,9 +1,22 @@
+/* import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
+import { getHopefuls }
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
+  const [hopefuls, setHopefuls] = useState([]);
+
   const { user } = useAuth();
+
+  const getAllHopefuls = () => {
+    getHopefuls(user.uid).then(setHopefuls);
+  };
+
+  useEffect(() => {
+    getAllHopefuls();
+  }, []);
 
   return (
     <div
@@ -24,4 +37,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Home; */
