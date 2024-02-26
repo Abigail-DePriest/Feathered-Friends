@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
-import Card from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
+import { Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteHopeful } from '../api/hopefulData';
 
-function HopefulCard({ hopefulObj, onUpdate }) {
+function HopefulCard({ hopefulsObj, onUpdate }) {
   const deleteThisBird = () => {
-    if (window.confirm(`Delete ${hopefulObj.birdName}?`)) {
-      deleteHopeful(hopefulObj.firebaseKey).then(() => onUpdate());
+    if (window.confirm(`Delete ${hopefulsObj.birdName}?`)) {
+      deleteHopeful(hopefulsObj.firebaseKey).then(() => onUpdate());
     }
   };
 
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={hopefulObj.image} alt={hopefulObj.birdName} style={{ height: '400px' }} />
+      <Card.Img variant="top" src={hopefulsObj.image} alt={hopefulsObj.birdName} style={{ height: '400px' }} />
       <Card.Body>
-        <Card.Title>{hopefulObj.birdName}</Card.Title>
-        <Link href={`/hopefuls/edit/${hopefulObj.firebaseKey}`} passHref>
+        <Card.Title>{hopefulsObj.birdName}</Card.Title>
+        <Link href={`/hopefuls/edit/${hopefulsObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisBird} className="m-2">
@@ -30,7 +30,7 @@ function HopefulCard({ hopefulObj, onUpdate }) {
 }
 
 HopefulCard.propTypes = {
-  hopefulObj: PropTypes.shape({
+  hopefulsObj: PropTypes.shape({
     birdName: PropTypes.string,
     habitat: PropTypes.string,
     description: PropTypes.string,
@@ -41,3 +41,5 @@ HopefulCard.propTypes = {
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
+
+export default HopefulCard;

@@ -1,9 +1,9 @@
-/* import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
-import { getHopefuls }
 import { useAuth } from '../utils/context/authContext';
+import { getHopefuls } from '../api/hopefulData';
+import HopefulCard from '../components/HopefulCard';
 
 function Home() {
   const [hopefuls, setHopefuls] = useState([]);
@@ -16,25 +16,21 @@ function Home() {
 
   useEffect(() => {
     getAllHopefuls();
-  }, []);
+  });
 
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+    <div className="text-center my-4">
+      <Link href="/hopefuls/new" passHref>
+        <Button>Add A Future Friend</Button>
+      </Link>
+      <div className="d-flex flex-wrap">
+        {hopefuls.map((hopeful) => (
+          <HopefulCard key={hopeful.firebaseKey} hopefulsObj={hopeful} onUpdate={getAllHopefuls} />
+        ))}
+      </div>
+
     </div>
   );
 }
 
-export default Home; */
+export default Home;
