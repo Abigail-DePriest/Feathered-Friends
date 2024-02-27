@@ -45,4 +45,22 @@ const deleteHopeful = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getHopefuls, createHopeful, deleteHopeful };
+const updateHopeful = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/hopefuls/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export {
+  getHopefuls,
+  createHopeful,
+  deleteHopeful,
+  updateHopeful,
+};
