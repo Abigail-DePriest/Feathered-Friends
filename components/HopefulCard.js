@@ -14,7 +14,7 @@ function HopefulCard({ hopefulsObj, onUpdate }) {
 
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={hopefulsObj.image} alt={hopefulsObj.birdName} style={{ height: '400px' }} />
+      <Card.Img variant="top" src={hopefulsObj.image} alt={hopefulsObj.birdName} style={{ height: '200px' }} />
       <Card.Body>
         <Card.Title>{hopefulsObj.birdName}</Card.Title>
         <Link href={`/hopefuls/edit/${hopefulsObj.firebaseKey}`} passHref>
