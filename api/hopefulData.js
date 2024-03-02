@@ -12,7 +12,8 @@ const getHopefuls = (uid) => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => {
       if (data) {
-        resolve(Object.values(data));
+        const unseenHopefuls = Object.values(data).filter((birdName) => !birdName.seen);
+        resolve(unseenHopefuls);// create filter that just returns birds that are "unseen"
       } else {
         resolve([]);
       }
@@ -58,9 +59,22 @@ const updateHopeful = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleHopeful = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/hopefuls/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   getHopefuls,
   createHopeful,
   deleteHopeful,
   updateHopeful,
+  getSingleHopeful,
 };

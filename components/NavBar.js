@@ -20,11 +20,11 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Hopefuls</Nav.Link>
             </Link>
-            <Link passHref href="/MyFlock">
+            <Link passHref href="/flock">
               <Nav.Link>MyFlock</Nav.Link>
             </Link>
-            <Link passHref href="/Profile">
-              <Nav.Link>Profile</Nav.Link>
+            <Link passHref href="/AddNewBird">
+              <Nav.Link>Add New Bird</Nav.Link>
             </Link>
             <Button variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>

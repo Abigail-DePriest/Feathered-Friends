@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { getHopefuls } from '../api/hopefulData';
 import HopefulCard from '../components/HopefulCard';
@@ -21,12 +19,9 @@ function Home() {
 
   return (
     <div className="text-center my-4">
-      <Link href="/hopefuls/new" passHref>
-        <Button>Add A Future Friend</Button>
-      </Link>
       <div className="d-flex flex-wrap">
         {hopefuls.map((hopeful) => (
-          <HopefulCard key={hopeful.firebaseKey} hopefulsObj={hopeful} onUpdate={getAllHopefuls} />
+          <HopefulCard key={hopefuls.firebaseKey} hopefulsObj={hopeful} onUpdate={getAllHopefuls} />
         ))}
       </div>
 

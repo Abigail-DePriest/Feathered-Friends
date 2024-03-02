@@ -1,82 +1,21 @@
 {
   "-NrQxSbIbnuVrG0-Es2T": {
-    "birdName": null,
-    "habitat": null,
-    "description": null,
-    "image": null,
-    "seen": true,
-    "uid": null
+    "birdName": "American Goldfinch",
+    "habitat": "forest",
+    "description":"Goldfinches often flock with Pine Siskins and Common Redpolls. Spring males are brilliant yellow and shiny black with a bit of white. Females and all winter birds are more dull but identifiable by their conical bill; pointed, notched tail; wingbars; and lack of streaking." ,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC1PRyt31sRuHuJnIrSkVJhrOs1A1TQ3W_IQatXXzc8w&s",
+    "seen": false,
+    "uid": "37tLeSkhEfX5wt0e5FYGoQVFigK2",
+    "firebaseKey": "-NrQxSbIbnuVrG0-Es2T"
   },
   "-NrQxSbJIT6uOM7wZfIB": {
-    "birdName": null,
-    "habitat": null,
-    "description": null,
-    "image": null,
+    "birdName": "Indigo Bunting",
+    "habitat": "shrubby grasslands",
+    "description": "Indigo buntings are small songbirds, roughly about the size of a sparrow. Males in their breeding plumage have a brilliant jewel-like coloring that makes them a favorite among birdwatchers. Vibrant shades of blue cover their bodies, with slightly darker blues on their head. Wingtips and tails are blackish.",
+    "image": "https://media.audubon.org/nas_birdapi_hero/h_a1_7508_2_indigo-bunting_julie_torkomian_breeding-adult-male.jpg",
     "seen": false,
-    "uid": null
-  },
-  "-NrQxSbJIT6uOM7wZfIC": {
-    "birdName": null,
-    "habitat": null,
-    "description": null,
-    "image": null,
-    "seen": false,
-    "uid": null
-  },
-  "-NrQxSbKRNPziWDuVeOV": {
-    "birdName": null,
-    "habitat": null,
-    "description": null,
-    "image": null,
-    "seen": false,
-    "uid": null
-  },
-  "-NrQxSbKRNPziWDuVeOW": {
-    "birdName": null,
-    "habitat": null,
-    "description": null,
-    "image": null,
-    "seen": true,
-    "uid": null
-  },
-  "-NrQxSbLQRksxFDFQcII": {
-    "birdName": null,
-    "habitat": null,
-    "description": null,
-    "image": null,
-    "seen": true,
-    "uid": null
-  },
-  "-NrQxSbLQRksxFDFQcIJ": {
-    "birdName": null,
-    "habitat": null,
-    "description": null,
-    "image": null,
-    "seen": false,
-    "uid": null
-  },
-  "-NrQxSbM23hoyKIW6qVm": {
-    "birdName": null,
-    "habitat": null,
-    "description": null,
-    "image": null,
-    "seen": false,
-    "uid": null
-  },
-  "-NrQxSbM23hoyKIW6qVn": {
-    "birdName": null,
-    "habitat": null,
-    "description": null,
-    "image": null,
-    "seen": false,
-    "uid": null
-  },
-  "-NrQxSbM23hoyKIW6qVo": {
-    "birdName": null,
-    "habitat": null,
-    "description": null,
-    "image": null,
-    "seen": true,
-    "uid": null
+    "uid":"37tLeSkhEfX5wt0e5FYGoQVFigK2",
+    "firebaseKey": "-NrQxSbJIT6uOM7wZfIB"
   }
+  
 }
