@@ -5,7 +5,8 @@
     "description": null,
     "image": null,
     "seen": true,
-    "uid": null
+    "uid": null,
+    "firebaseKey": "-NrQxSbIbnuVrG0-Es2T"
   },
   "-NrQxSbJIT6uOM7wZfIB": {
     "birdName": null,
@@ -13,7 +14,8 @@
     "description": null,
     "image": null,
     "seen": false,
-    "uid": null
+    "uid": null,
+    "firebaseKey": "-NrQxSbJIT6uOM7wZfIB"
   },
   "-NrQxSbJIT6uOM7wZfIC": {
     "birdName": null,
@@ -21,7 +23,8 @@
     "description": null,
     "image": null,
     "seen": false,
-    "uid": null
+    "uid": null,
+    "firebaseKey": "-NrQxSbJIT6uOM7wZfIC"
   },
   "-NrQxSbKRNPziWDuVeOV": {
     "birdName": null,
@@ -29,7 +32,8 @@
     "description": null,
     "image": null,
     "seen": false,
-    "uid": null
+    "uid": null,
+    "firebaseKey": "-NrQxSbKRNPziWDuVeOV"
   },
   "-NrQxSbKRNPziWDuVeOW": {
     "birdName": null,
@@ -37,7 +41,8 @@
     "description": null,
     "image": null,
     "seen": true,
-    "uid": null
+    "uid": null,
+    "firebaseKey": "-NrQxSbKRNPziWDuVeOW"
   },
   "-NrQxSbLQRksxFDFQcII": {
     "birdName": null,
@@ -45,7 +50,8 @@
     "description": null,
     "image": null,
     "seen": true,
-    "uid": null
+    "uid": null,
+    "firebaseKey": "-NrQxSbLQRksxFDFQcII"
   },
   "-NrQxSbLQRksxFDFQcIJ": {
     "birdName": null,
@@ -53,7 +59,8 @@
     "description": null,
     "image": null,
     "seen": false,
-    "uid": null
+    "uid": null,
+    "firebaseKey":  "-NrQxSbLQRksxFDFQcIJ"
   },
   "-NrQxSbM23hoyKIW6qVm": {
     "birdName": null,
@@ -61,7 +68,8 @@
     "description": null,
     "image": null,
     "seen": false,
-    "uid": null
+    "uid": null,
+    "firebaseKey": "-NrQxSbM23hoyKIW6qVm"
   },
   "-NrQxSbM23hoyKIW6qVn": {
     "birdName": null,
@@ -69,7 +77,8 @@
     "description": null,
     "image": null,
     "seen": false,
-    "uid": null
+    "uid": null,
+    "firebaseKey": "-NrQxSbM23hoyKIW6qVn"
   },
   "-NrQxSbM23hoyKIW6qVo": {
     "birdName": null,
@@ -77,6 +86,7 @@
     "description": null,
     "image": null,
     "seen": true,
-    "uid": null
+    "uid": null,
+    "firebaseKey": "-NrQxSbM23hoyKIW6qVo"
   }
 }
