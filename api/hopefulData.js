@@ -12,7 +12,8 @@ const getHopefuls = (uid) => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => {
       if (data) {
-        resolve(Object.values(data));
+        const unseenHopefuls = Object.values(data).filter((birdName) => !birdName.seen);
+        resolve(unseenHopefuls);// create filter that just returns birds that are "unseen"
       } else {
         resolve([]);
       }

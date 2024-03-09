@@ -1,6 +1,6 @@
 import React from 'react';
-import HopefulsForm from '../../components/forms/HopefulsForm';
+import BirdForm from '../AddNewBird';
 
 export default function AddFutureFriend() {
-  return <HopefulsForm />;
+  return <BirdForm />;
 }

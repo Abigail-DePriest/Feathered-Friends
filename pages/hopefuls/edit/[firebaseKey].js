@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getSingleHopeful } from '../../../api/hopefulData';
-import HopefulsForm from '../../../components/forms/HopefulsForm';
+import BirdForm from '../../AddNewBird';
 
 export default function EditHopeful() {
   const [editItem, setEditItem] = useState({});
@@ -11,5 +11,5 @@ export default function EditHopeful() {
   useEffect(() => {
     getSingleHopeful(firebaseKey).then(setEditItem);
   }, [firebaseKey]);
-  return (<HopefulsForm obj={editItem} />);
+  return (<BirdForm obj={editItem} />);
 }

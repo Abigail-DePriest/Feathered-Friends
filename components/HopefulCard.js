@@ -22,6 +22,8 @@ function HopefulCard({ hopefulsObj, onUpdate }) {
       <Card.Img variant="top" src={hopefulsObj.image} alt={hopefulsObj.birdName} style={{ height: '200px' }} />
       <Card.Body>
         <Card.Title>{hopefulsObj.birdName}</Card.Title>
+        <p className="card-text bold"> {hopefulsObj.description} </p>
+        <p className="card-text bold"> {hopefulsObj.habitat} </p>
         <Button onClick={toggleButton}>
           {seenToggled ? 'SEEN' : 'UNSEEN' }
         </Button>
@@ -36,6 +38,7 @@ function HopefulCard({ hopefulsObj, onUpdate }) {
 
   );
 }
+// write location, date found but only show up if "seen" is true....code for MyFlock card in here.
 
 HopefulCard.propTypes = {
   hopefulsObj: PropTypes.shape({

@@ -11,7 +11,7 @@ const getFlock = (uid) => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data) {
+      if (data) { // create filter for "seen" birds
         resolve(Object.values(data));
       } else {
         resolve([]);
@@ -33,4 +33,47 @@ const createFlockMember = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getFlock, createFlockMember };
+const getFlockMember = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/flock/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const updateFlock = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/flock/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const deleteFlockMember = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/flock/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
+
+export {
+  getFlock,
+  createFlockMember,
+  deleteFlockMember,
+  getFlockMember,
+  updateFlock,
+};
