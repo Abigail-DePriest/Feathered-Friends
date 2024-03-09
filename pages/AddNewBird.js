@@ -16,7 +16,6 @@ const initialState = {
   location: '',
   date: '',
   seen: false,
-  uid: '',
 };
 
 function BirdForm({ obj }) {

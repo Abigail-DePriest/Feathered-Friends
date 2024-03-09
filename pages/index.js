@@ -21,7 +21,7 @@ function Home() {
     <div className="text-center my-4">
       <div className="d-flex flex-wrap">
         {hopefuls.map((hopeful) => (
-          <HopefulCard key={hopefuls.firebaseKey} hopefulsObj={hopeful} onUpdate={getAllHopefuls} />
+          <HopefulCard key={hopeful.firebaseKey} hopefulsObj={hopeful} onUpdate={getAllHopefuls} />
         ))}
       </div>
 
