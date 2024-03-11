@@ -21,6 +21,7 @@ const getHopefuls = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+
 const createHopeful = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/hopefuls.json`, {
     method: 'POST',
