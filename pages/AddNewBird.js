@@ -5,7 +5,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
-import { getHopefuls, createHopeful, updateHopeful } from '../api/hopefulData';
+import { createHopeful, updateHopeful } from '../api/hopefulData';
 import { createFlockMember, updateFlock } from '../api/flockData';
 
 const initialState = {
@@ -20,9 +20,9 @@ const initialState = {
 
 function BirdForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  const [hopefuls, setHopefuls] = useState([]);
-  const [selectedHabitat, setSelectedHabitat] = useState('');
+  // const [hopefuls, setHopefuls] = useState([]);
   const [seen, setSeen] = useState(false);
+  const [selectedHabitat, setSelectedHabitat] = useState('');
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
   const toggleSeen = () => {
@@ -33,14 +33,23 @@ function BirdForm({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
 
+  const habitatOptions = [
+    { value: 'forest', label: 'Forest' },
+    { value: 'grasslands', label: 'Grasslands' },
+    { value: 'mountains', label: 'Mountains' },
+    { value: 'coastal', label: 'Coastal' },
+    { value: 'wetlands', label: 'Wetlands' },
+  ];
+
+  const handleHabitatChange = (e) => {
+    setSelectedHabitat(e.target.value);
+  };
+
   useEffect(() => {
-    getHopefuls(user.uid).then(setHopefuls);
+  // getHopefuls(user.uid).then(setHopefuls);
 
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
-  const handleSelectHabitat = (e) => {
-    setSelectedHabitat(e.target.value);
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,17 +58,23 @@ function BirdForm({ obj }) {
       [name]: value,
     }));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (seen) {
-      const payload = { ...formInput, uid: user.uid };
-      createFlockMember(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
-        updateFlock(patchPayload).then(() => {
-          router.push('/flock');
+      if (obj.firebaseKey) {
+        updateFlock(formInput).then(() => router.push(`/flock/${obj.firebaseKey}`));
+      } else {
+        const payload = { ...formInput, uid: user.uid };
+        createFlockMember(payload).then(({ name }) => {
+          const patchPayload = { firebaseKey: name };
+          updateFlock(patchPayload).then(() => {
+            router.push('/flock');
+          });
         });
-      });
+      }
+    } else if (obj.firebaseKey) {
+      updateHopeful(formInput).then(() => router.push('/'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createHopeful(payload).then(({ name }) => {
@@ -70,7 +85,6 @@ function BirdForm({ obj }) {
       });
     }
   };
-
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} New Friend </h2>
@@ -104,19 +118,19 @@ function BirdForm({ obj }) {
         <Form.Select
           aria-label="Habitat"
           name="habitat"
-          onChange={handleSelectHabitat}
+          onChange={handleHabitatChange}
           className="mb-3"
           value={selectedHabitat}
           required
         >
           <option value="">Select a Habitat</option>
           {
-            hopefuls.map((hopeful) => (
+            habitatOptions.map((habitat) => (
               <option
-                key={hopeful.firebaseKey}
-                value={hopeful.firebaseKey}
+                key={habitat.value}
+                value={habitat.value}
               >
-                {hopeful.habitat}
+                {habitat.label}
               </option>
             ))
           }
