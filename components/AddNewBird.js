@@ -63,7 +63,7 @@ function BirdForm({ obj }) {
 
     if (seen) {
       if (obj.firebaseKey) {
-        updateFlock(formInput).then(() => router.push(`/flock/${obj.firebaseKey}`));
+        updateFlock(formInput).then(() => router.push('/flock'));
       } else {
         const payload = { ...formInput, uid: user.uid };
         createFlockMember(payload).then(({ name }) => {
@@ -87,7 +87,7 @@ function BirdForm({ obj }) {
   };
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} New Friend </h2>
+      <h2 className="text-white mt-5">{obj?.firebaseKey ? 'Update' : 'Create'} New Friend </h2>
 
       {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Bird Name" className="mb-3">

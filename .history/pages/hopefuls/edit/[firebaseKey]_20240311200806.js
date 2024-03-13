@@ -16,7 +16,6 @@ export default function EditHopeful() {
     } else {
       getSingleHopeful(birdId).then(setEditItem);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firebaseKey]);
 
   return (<BirdForm obj={editItem} />);

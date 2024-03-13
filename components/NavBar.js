@@ -11,7 +11,7 @@ export default function NavBar() {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Link passHref href="/">
-          <Navbar.Brand>FEATHERED FRIENDS</Navbar.Brand>
+          <Navbar.Brand>Feathered Friends</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -23,7 +23,7 @@ export default function NavBar() {
             <Link passHref href="/flock">
               <Nav.Link>MyFlock</Nav.Link>
             </Link>
-            <Link passHref href="/AddNewBird">
+            <Link passHref href="/hopefuls/new">
               <Nav.Link>Add New Bird</Nav.Link>
             </Link>
             <Button variant="danger" onClick={signOut}>Sign Out</Button>

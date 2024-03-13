@@ -17,8 +17,7 @@ function FlockCard({ flockObj, onUpdate }) {
       <Card.Img variant="top" src={flockObj.image} alt={flockObj.birdName} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{flockObj.birdName}</Card.Title>
-        {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
-        <Link href={`/flock/edit/${flockObj.firebaseKey}`} passHref>
+        <Link href={`/hopefuls/edit/${flockObj.firebaseKey}_true`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisFlockMember} className="m-2">

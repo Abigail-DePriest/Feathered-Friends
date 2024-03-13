@@ -1,6 +1,6 @@
 import React from 'react';
-import BirdForm from '../AddNewBird';
+import BirdForm from '../../components/AddNewBird';
 
-export default function AddFutureFriend() {
+export default function AddNewBird() {
   return <BirdForm />;
 }
