@@ -17,7 +17,7 @@ function Home() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
+  return (// maybe deal with selectedHabitat here?
     <div className="text-center my-4">
       <div className="d-flex flex-wrap">
         {hopefuls.map((hopeful) => (

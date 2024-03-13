@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteHopeful } from '../api/hopefulData';
 
-function HopefulCard({ hopefulsObj, onUpdate }) {
+function HopefulCard({ hopefulsObj, onUpdate }) { // should I pass a selectedHabitat argument here? habitat isn't showing on the card currently.
   const [seenToggled, setSeenToggled] = useState(false);
 
   const toggleButton = () => {
@@ -27,7 +27,7 @@ function HopefulCard({ hopefulsObj, onUpdate }) {
         <Button onClick={toggleButton}>
           {seenToggled ? 'SEEN' : 'UNSEEN' }
         </Button>
-        <Link href={`/hopefuls/edit/${hopefulsObj.firebaseKey}`} passHref>
+        <Link href={`/hopefuls/edit/${hopefulsObj.firebaseKey}_false`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisBird} className="m-2">
