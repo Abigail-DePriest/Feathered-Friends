@@ -47,8 +47,13 @@ function BirdForm({ obj }) {
 
   useEffect(() => {
   // getHopefuls(user.uid).then(setHopefuls);
-
-    if (obj.firebaseKey) setFormInput(obj);
+  // maybe I need to use getFlock here?
+    if (obj.firebaseKey) {
+      setFormInput(obj);
+      setSeen(obj.seen);
+    } else if (obj === 'flock') {
+      setSeen(true);
+    }
   }, [obj, user]);
 
   const handleChange = (e) => {
@@ -57,6 +62,11 @@ function BirdForm({ obj }) {
       ...prevState,
       [name]: value,
     }));
+    if (name === 'location') {
+      setLocation(value);
+    } else if (name === 'date') {
+      setDate(value);
+    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -175,7 +185,7 @@ function BirdForm({ obj }) {
         <Form.Control
           type="text"
           placeholder="Location Found"
-          name="Location"
+          name="location"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           required
@@ -187,7 +197,7 @@ function BirdForm({ obj }) {
         <Form.Control
           type="text"
           placeholder="Date Found"
-          name="Date Found"
+          name="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required

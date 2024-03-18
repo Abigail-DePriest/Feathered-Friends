@@ -4,12 +4,19 @@ import Button from 'react-bootstrap/Button';
 import { Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteHopeful } from '../api/hopefulData';
+import { moveBirdToFlock } from '../api/flockData';
 
 function HopefulCard({ hopefulsObj, onUpdate }) { // should I pass a selectedHabitat argument here? habitat isn't showing on the card currently.
   const [seenToggled, setSeenToggled] = useState(false);
 
   const toggleButton = () => {
     setSeenToggled(!seenToggled);
+    if (!seenToggled) {
+      moveBirdToFlock(hopefulsObj).then(() => {
+      }).catch((error) => {
+        console.error('Error moving bird to flock:', error);
+      });
+    }
   };
   const deleteThisBird = () => {
     if (window.confirm(`Delete ${hopefulsObj.birdName}?`)) {
