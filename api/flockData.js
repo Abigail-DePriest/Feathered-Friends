@@ -1,5 +1,5 @@
 import { clientCredentials } from '../utils/client';
-import { deleteHopeful } from './hopefulData';
+// import { deleteHopeful } from './hopefulData';
 
 const endpoint = clientCredentials.databaseURL;
 
@@ -59,15 +59,15 @@ const updateFlock = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const moveBirdToFlock = async (birdData) => {
+/* const moveBirdToFlock = async (hopefulData) => {
   try {
-    await createFlockMember(birdData);
+    await createFlockMember(hopefulData);
 
-    await deleteHopeful(birdData.firebaseKey);
+    await deleteHopeful(hopefulData.firebaseKey);
   } catch (error) {
     console.error('Error moving bird to flock:', error);
   }
-};
+}; */ // firebaseKey taken out and new firebaseKey created
 
 const deleteFlockMember = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/flock/${firebaseKey}.json`, {
@@ -87,5 +87,5 @@ export {
   deleteFlockMember,
   getFlockMember,
   updateFlock,
-  moveBirdToFlock,
+  // moveBirdToFlock,
 };

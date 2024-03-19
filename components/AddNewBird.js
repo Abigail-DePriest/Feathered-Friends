@@ -20,58 +20,29 @@ const initialState = {
 
 function BirdForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  // const [hopefuls, setHopefuls] = useState([]);
-  const [seen, setSeen] = useState(false);
-  const [selectedHabitat, setSelectedHabitat] = useState('');
-  const [location, setLocation] = useState('');
-  const [date, setDate] = useState('');
-  const toggleSeen = () => {
-    setSeen((prev) => !prev);
-    setLocation('');
-    setDate('');
-  };
   const router = useRouter();
   const { user } = useAuth();
 
-  const habitatOptions = [
-    { value: 'forest', label: 'Forest' },
-    { value: 'grasslands', label: 'Grasslands' },
-    { value: 'mountains', label: 'Mountains' },
-    { value: 'coastal', label: 'Coastal' },
-    { value: 'wetlands', label: 'Wetlands' },
-  ];
-
-  const handleHabitatChange = (e) => {
-    setSelectedHabitat(e.target.value);
-  };
-
   useEffect(() => {
-  // getHopefuls(user.uid).then(setHopefuls);
-  // maybe I need to use getFlock here?
     if (obj.firebaseKey) {
       setFormInput(obj);
-      setSeen(obj.seen);
     } else if (obj === 'flock') {
-      setSeen(true);
+      setFormInput((prev) => ({ ...prev, seen: true }));
     }
-  }, [obj, user]);
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormInput((prevState) => ({
-      ...prevState,
+    setFormInput((prev) => ({
+      ...prev,
       [name]: value,
     }));
-    if (name === 'location') {
-      setLocation(value);
-    } else if (name === 'date') {
-      setDate(value);
-    }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (seen) {
+    if (formInput.seen) {
       if (obj.firebaseKey) {
         updateFlock(formInput).then(() => router.push('/flock'));
       } else {
@@ -95,11 +66,11 @@ function BirdForm({ obj }) {
       });
     }
   };
+
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj?.firebaseKey ? 'Update' : 'Create'} New Friend </h2>
+      <h2 className="text-white mt-5">{obj?.firebaseKey ? 'Update' : 'Create'} New Friend</h2>
 
-      {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Bird Name" className="mb-3">
         <Form.Control
           type="text"
@@ -111,7 +82,6 @@ function BirdForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* IMAGE INPUT  */}
       <FloatingLabel controlId="floatingInput2" label="Bird Image" className="mb-3">
         <Form.Control
           type="url"
@@ -123,31 +93,23 @@ function BirdForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* HABITAT */}
-      <FloatingLabel controlId="floatingSelect" label="Habitat">
-        <Form.Select
-          aria-label="Habitat"
+      <FloatingLabel controlId="floatingSelect" label="Habitat" className="mb-3">
+        <Form.Control
+          as="select"
           name="habitat"
-          onChange={handleHabitatChange}
-          className="mb-3"
-          value={selectedHabitat}
+          value={formInput.habitat}
+          onChange={handleChange}
           required
         >
-          <option value="">Select a Habitat</option>
-          {
-            habitatOptions.map((habitat) => (
-              <option
-                key={habitat.value}
-                value={habitat.value}
-              >
-                {habitat.label}
-              </option>
-            ))
-          }
-        </Form.Select>
+          <option value="">Select Habitat</option>
+          <option value="Farmland">Farmland</option>
+          <option value="Forestland">Forestland</option>
+          <option value="Grassland">Grassland</option>
+          <option value="Urban/Park Areas">Urban/Park Areas</option>
+          <option value="Rivers, Streams, Ponds">Rivers, Streams, Ponds</option>
+        </Form.Control>
       </FloatingLabel>
 
-      {/* DESCRIPTION TEXTAREA  */}
       <FloatingLabel controlId="floatingTextarea" label="Description" className="mb-3">
         <Form.Control
           as="textarea"
@@ -160,10 +122,10 @@ function BirdForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* A WAY TO HANDLE UPDATES FOR TOGGLES, RADIOS, ETC  */}
-      <Button onClick={toggleSeen}>
-        { seen ? 'Disable Seen' : 'Enable Seen'}
+      <Button onClick={() => setFormInput((prev) => ({ ...prev, seen: !prev.seen }))}>
+        {formInput.seen ? 'Disable Seen' : 'Enable Seen'}
       </Button>
+
       <Form.Check
         className="text-white mb-3"
         type="switch"
@@ -171,58 +133,55 @@ function BirdForm({ obj }) {
         name="seen"
         label="Seen?"
         checked={formInput.seen}
-        onChange={(e) => {
-          setFormInput((prevState) => ({
-            ...prevState,
-            seen: e.target.checked,
-          }));
-        }} // if "seen" then other input fields for Location and Date should drop down/populate. Also, button should change to "CREATE FRIEND"
+        onChange={handleChange}
       />
 
-      {/* CONDITIONAL RENDERING FOR LOCATION AND DATE */}
-      {seen && (
-      <FloatingLabel controlId="floatingInput2" label="location" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Location Found"
-          name="location"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          required
-        />
-      </FloatingLabel>
-      )}
-      {seen && (
-      <FloatingLabel controlId="floatingInput2" label="date" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Date Found"
-          name="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
-        />
-      </FloatingLabel>
+      {formInput.seen && (
+        <FloatingLabel controlId="floatingInput3" label="Location Found" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Location Found"
+            name="location"
+            value={formInput.location}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
       )}
 
-      {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} New Friend </Button>
+      {formInput.seen && (
+        <FloatingLabel controlId="floatingInput4" label="Date Found" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Date Found"
+            name="date"
+            value={formInput.date}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
+      )}
+
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} New Friend</Button>
     </Form>
   );
 }
 
 BirdForm.propTypes = {
-  obj: PropTypes.shape({
-    birdName: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.string,
-    habitat: PropTypes.string,
-    seen: PropTypes.bool,
-    location: PropTypes.string,
-    date: PropTypes.string,
-    uid: PropTypes.string,
-    firebaseKey: PropTypes.string,
-  }),
+  obj: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      birdName: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+      habitat: PropTypes.string,
+      seen: PropTypes.bool,
+      location: PropTypes.string,
+      date: PropTypes.string,
+      uid: PropTypes.string,
+      firebaseKey: PropTypes.string,
+    }),
+  ]),
 };
 
 BirdForm.defaultProps = {

@@ -17,6 +17,7 @@ function FlockCard({ flockObj, onUpdate }) {
       <Card.Img variant="top" src={flockObj.image} alt={flockObj.birdName} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{flockObj.birdName}</Card.Title>
+        <p className="card-text bold"> {flockObj.habitat} </p>
         <p className="card-text bold"> {flockObj.location} </p>
         <p className="card-text bold"> {flockObj.date} </p>
         <Link href={`/hopefuls/edit/${flockObj.firebaseKey}_true`} passHref>
@@ -41,7 +42,7 @@ FlockCard.propTypes = {
     location: PropTypes.string,
     date: PropTypes.string,
     firebaseKey: PropTypes.string,
-    seen: PropTypes.string,
+    seen: PropTypes.bool,
     uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,

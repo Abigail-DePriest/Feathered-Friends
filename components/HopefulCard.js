@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import { Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteHopeful } from '../api/hopefulData';
-import { moveBirdToFlock } from '../api/flockData';
+// import { moveBirdToFlock } from '../api/flockData';
 
 function HopefulCard({ hopefulsObj, onUpdate }) { // should I pass a selectedHabitat argument here? habitat isn't showing on the card currently.
-  const [seenToggled, setSeenToggled] = useState(false);
+  // const [seenToggled, setSeenToggled] = useState(false);
 
-  const toggleButton = () => {
+  /* const toggleButton = () => {
     setSeenToggled(!seenToggled);
     if (!seenToggled) {
       moveBirdToFlock(hopefulsObj).then(() => {
@@ -17,7 +17,7 @@ function HopefulCard({ hopefulsObj, onUpdate }) { // should I pass a selectedHab
         console.error('Error moving bird to flock:', error);
       });
     }
-  };
+  }; */
   const deleteThisBird = () => {
     if (window.confirm(`Delete ${hopefulsObj.birdName}?`)) {
       deleteHopeful(hopefulsObj.firebaseKey).then(() => onUpdate());
@@ -31,9 +31,6 @@ function HopefulCard({ hopefulsObj, onUpdate }) { // should I pass a selectedHab
         <Card.Title>{hopefulsObj.birdName}</Card.Title>
         <p className="card-text bold"> {hopefulsObj.description} </p>
         <p className="card-text bold"> {hopefulsObj.habitat} </p>
-        <Button onClick={toggleButton}>
-          {seenToggled ? 'SEEN' : 'UNSEEN' }
-        </Button>
         <Link href={`/hopefuls/edit/${hopefulsObj.firebaseKey}_false`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
@@ -61,3 +58,5 @@ HopefulCard.propTypes = {
 };
 
 export default HopefulCard;
+
+// need to have "seen" route to edit form and then toggle seen so it lands on Flock page after location/date edit. Ideally would also like for it to delete.
