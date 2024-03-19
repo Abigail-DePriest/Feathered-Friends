@@ -41,7 +41,7 @@ FlockCard.propTypes = {
     location: PropTypes.string,
     date: PropTypes.string,
     firebaseKey: PropTypes.string,
-    seen: PropTypes.string,
+    seen: PropTypes.bool,
     uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,

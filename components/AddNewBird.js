@@ -50,7 +50,7 @@ function BirdForm({ obj }) {
   // maybe I need to use getFlock here?
     if (obj.firebaseKey) {
       setFormInput(obj);
-      setSeen(obj.seen);
+      setSeen(obj.seen === 'true');
     } else if (obj === 'flock') {
       setSeen(true);
     }
@@ -66,6 +66,9 @@ function BirdForm({ obj }) {
       setLocation(value);
     } else if (name === 'date') {
       setDate(value);
+    }
+    if (name === 'seen') {
+      setSeen(value === 'true');
     }
   };
   const handleSubmit = (e) => {
