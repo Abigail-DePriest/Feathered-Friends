@@ -25,16 +25,21 @@ function HopefulCard({ hopefulsObj, onUpdate }) { // should I pass a selectedHab
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card style={
+      {
+        width: '18rem', margin: '10px', backgroundColor: '#EFA282', borderRadius: '50px',
+      }
+}
+    >
       <Card.Img variant="top" src={hopefulsObj.image} alt={hopefulsObj.birdName} style={{ height: '200px' }} />
       <Card.Body>
         <Card.Title>{hopefulsObj.birdName}</Card.Title>
         <p className="card-text bold"> {hopefulsObj.description} </p>
         <p className="card-text bold"> {hopefulsObj.habitat} </p>
         <Link href={`/hopefuls/edit/${hopefulsObj.firebaseKey}_false`} passHref>
-          <Button variant="info">EDIT</Button>
+          <Button variant="outline-success">EDIT</Button>
         </Link>
-        <Button variant="danger" onClick={deleteThisBird} className="m-2">
+        <Button variant="outline-danger" onClick={deleteThisBird} className="m-2">
           DELETE
         </Button>
       </Card.Body>

@@ -4,8 +4,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: New Century Schoolbook, serif, cursive;
 }
 
 a {
@@ -18,5 +17,11 @@ a {
 }
 
 body {
-  background-color: #d85af72c;
+  background-image: url("../public/img/FriendsSignIn.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #ffffff;
+  width: '100vw';
+  height: '100vh';
 }
