@@ -4,14 +4,24 @@ import Link from 'next/link';
 import {
   Navbar, Container, Nav, Button,
 } from 'react-bootstrap';
+import Image from 'next/image';
 import { signOut } from '../utils/auth';
+import logo from '../public/img/Feathered-Friends.png';
 
 export default function NavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{ backgroundColor: '#E4D00A' }}>
       <Container>
         <Link passHref href="/">
-          <Navbar.Brand>Feathered Friends</Navbar.Brand>
+          <Navbar.Brand>
+            <Image
+              src={logo}
+              className="img"
+              width={100}
+              height={100}
+              alt="Feathered Friends"
+            />
+          </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

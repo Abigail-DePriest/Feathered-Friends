@@ -1,36 +1,13 @@
-/* import { clientCredentials } from '../utils/client';
+/* import { getFlockMember } from './flockData';
 
-const mergeData = async (hopefuls, actionType, data) => {
-  try {
-    const endpoint = clientCredentials.databaseURL;
+const viewFlockMemberDetails = (bookFirebaseKey) => new Promise((resolve, reject) => {
+  getFlockMember(flockMemberFirebaseKey)
+    .then((flockObject) => {
+      getSingleAuthor(bookObject.author_id)
+        .then((authorObject) => {
+          resolve({ authorObject, ...bookObject });
+        });
+    }).catch((error) => reject(error));
+});
 
-    if (actionType === 'edit') {
-      const response = await fetch(endpoint, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-      if (!response.ok) {
-        throw new Error('Failed to edit entity');
-      }
-    } else if (actionType === 'delete') {
-      const response = await fetch(endpoint, {
-        method: 'DELETE',
-      });
-      if (!response.ok) {
-        throw new Error('Failed to delete entity');
-      }
-    } else {
-      throw new Error('Invalid action type');
-    }
-
-    return true;
-  } catch (error) {
-    console.error('Error:', error);
-    return false;
-  }
-};
-
-export default mergeData; */
+export default viewFlockMemberDetails; */
