@@ -20,24 +20,24 @@ function FlockCard({ flockObj, onUpdate }) {
 
   return (
     <Card style={{
-      width: '18rem', margin: '10px', backgroundColor: '#EFA282', borderRadius: '50px',
+      width: '18rem', margin: '10px', backgroundColor: '#EFA282', borderRadius: '45%',
     }}
     >
-      <Card.Img variant="top" src={flockObj.image} alt={flockObj.birdName} style={{ height: '400px' }} />
+      <Card.Img variant="top" src={flockObj.image} alt={flockObj.birdName} style={{ height: '200px', borderRadius: '50px' }} />
       <Card.Body>
         <Card.Title>{flockObj.birdName}</Card.Title>
         <p className="card-text bold"> {flockObj.habitat} </p>
         <p className="card-text bold"> {flockObj.location} </p>
         <p className="card-text bold"> {flockObj.date} </p>
         {/* Button to trigger modal */}
-        <Button variant="outline-info" onClick={handleShowModal}>
-          Notes
+        <Button variant="📒" style={{ width: '4rem' }} onClick={handleShowModal}>
+          📒
         </Button>
         <Link href={`/hopefuls/edit/${flockObj.firebaseKey}_true`} passHref>
-          <Button variant="outline success">EDIT</Button>
+          <Button variant="✏️" style={{ }}>✏️</Button>
         </Link>
         {/* Delete button */}
-        <Button variant="outline danger" onClick={deleteThisFlockMember} className="m-2">
+        <Button variant="danger" style={{ width: '8rem', background: '#FF5757' }} onClick={deleteThisFlockMember} className="m-2">
           DELETE
         </Button>
       </Card.Body>

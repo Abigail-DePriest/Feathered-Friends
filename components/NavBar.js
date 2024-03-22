@@ -6,11 +6,11 @@ import {
 } from 'react-bootstrap';
 import Image from 'next/image';
 import { signOut } from '../utils/auth';
-import logo from '../public/img/Feathered-Friends.png';
+import logo from '../public/img/BirdLogo.png';
 
 export default function NavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{ backgroundColor: '#E4D00A' }}>
+    <Navbar id="nav" collapseOnSelect expand="lg">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>
@@ -39,7 +39,7 @@ export default function NavBar() {
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>
             </Link>
-            <Button variant="danger" onClick={signOut}>Sign Out</Button>
+            <Button variant="danger" style={{ backgroundColor: '#FF5757' }} onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>

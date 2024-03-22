@@ -39,6 +39,10 @@ function BirdForm({ obj }) {
     }));
   };
 
+  const handleSeenToggle = () => {
+    setFormInput((prev) => ({ ...prev, seen: !prev.seen }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -69,7 +73,7 @@ function BirdForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj?.firebaseKey ? 'Update' : 'Create'} New Friend</h2>
+      <h2 className="text-white mt-5" style={{ backgroundColor: '#FF5757', borderRadius: '18%', padding: '5px' }}>{obj?.firebaseKey ? 'Update' : 'Create'} New Friend</h2>
 
       <FloatingLabel controlId="floatingInput1" label="Bird Name" className="mb-3">
         <Form.Control
@@ -122,10 +126,6 @@ function BirdForm({ obj }) {
         />
       </FloatingLabel>
 
-      <Button onClick={() => setFormInput((prev) => ({ ...prev, seen: !prev.seen }))}>
-        {formInput.seen ? 'Disable Seen' : 'Enable Seen'}
-      </Button>
-
       <Form.Check
         className="text-white mb-3"
         type="switch"
@@ -133,7 +133,7 @@ function BirdForm({ obj }) {
         name="seen"
         label="Seen?"
         checked={formInput.seen}
-        onChange={handleChange}
+        onChange={handleSeenToggle}
       />
 
       {formInput.seen && (
@@ -162,7 +162,7 @@ function BirdForm({ obj }) {
         </FloatingLabel>
       )}
 
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} New Friend</Button>
+      <Button type="submit" style={{ backgroundColor: '#FF5757' }}>{obj.firebaseKey ? 'Update' : 'Create'} New Friend</Button>
     </Form>
   );
 }
