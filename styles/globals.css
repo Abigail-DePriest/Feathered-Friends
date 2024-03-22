@@ -25,3 +25,8 @@ body {
   width: '100vw';
   height: '100vh';
 }
+
+#nav {
+  background-color: #E4D00A;
+  font-size: medium;
+}
