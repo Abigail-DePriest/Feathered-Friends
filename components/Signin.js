@@ -17,7 +17,7 @@ function Signin() {
         border: '15px, black',
       }}
     >
-      <h1>Welcome!</h1>
+      <h1>Welcome to Feathered Friends!</h1>
       <Card>
         <Card.Body style={{ backgroundColor: '#EFA282' }}>
           <blockquote className="blockquote mb-0">
@@ -56,7 +56,7 @@ function Signin() {
         </Card.Body>
       </Card>
       <Button type="button" size="lg" className="btn" style={{ backgroundColor: '#FF5757', margin: '20px' }} onClick={signIn}>
-        CHIRP
+        SIGN IN
       </Button>
     </div>
   );
