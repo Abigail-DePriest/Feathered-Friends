@@ -37,7 +37,7 @@ function HopefulCard({ hopefulsObj, onUpdate }) { // should I pass a selectedHab
         <Link href={`/hopefuls/edit/${hopefulsObj.firebaseKey}_false`} passHref>
           <Button variant="✏️">✏️</Button>
         </Link>
-        <Button variant="danger" style={{ background: '#FF5757' }} onClick={deleteThisBird} className="m-2">
+        <Button variant="danger" style={{ background: '#FF5757', border: '1px solid FF5757' }} onClick={deleteThisBird} className="m-2">
           DELETE
         </Button>
       </Card.Body>

@@ -55,7 +55,7 @@ function Signin() {
           </blockquote>
         </Card.Body>
       </Card>
-      <Button type="button" size="lg" className="btn" style={{ backgroundColor: '#FF5757', margin: '20px' }} onClick={signIn}>
+      <Button type="button" size="lg" className="btn" style={{ backgroundColor: '#FF5757', margin: '20px', border: '1px solid #FF5757' }} onClick={signIn}>
         SIGN IN
       </Button>
     </div>
